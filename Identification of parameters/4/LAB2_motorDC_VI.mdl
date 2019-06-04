@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.485"
+    ComputedModelVersion    "1.488"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -17,7 +17,19 @@ Model {
     PreCompExecutionDomainType "Unset"
     IsExportFunctionModel   0
     NumParameterArguments   0
-    NumExternalFileReferences 0
+    NumExternalFileReferences 2
+    ExternalFileReference {
+      Reference		      "simulink/Continuous/PID Controller"
+      Path		      "LAB2_motorDC_VI/PD with b_hat"
+      SID		      "56"
+      Type		      "LIBRARY_BLOCK"
+    }
+    ExternalFileReference {
+      Reference		      "simulink/Continuous/PID Controller"
+      Path		      "LAB2_motorDC_VI/PD without b_hat"
+      SID		      "55"
+      Type		      "LIBRARY_BLOCK"
+    }
     OrderedModelArguments   1
   }
   DiagnosticSuppressor	  "on"
@@ -45,7 +57,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [583.0, 185.0, 1085.0, 731.0]
+      Location		      [1028.0, 0.0, 899.0, 1047.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -69,9 +81,9 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1031.0, 580.0]
-	ZoomFactor		[0.8]
-	Offset			[-202.0, -267.87500000000006]
+	Extents			[845.0, 896.0]
+	ZoomFactor		[1.0]
+	Offset			[135.27449450157928, -161.19728353360813]
       }
       Object {
 	$PropName		"DockComponentsInfo"
@@ -91,7 +103,7 @@ Model {
       "AAAAAAA+wAAABYARABvAGMAawBXAGkAZABnAGUAdAA0AAAAAAD/////AAAAAAAAAAD7AAAAUgBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0Ac"
       "ABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAABjAP///wAAAAEAAAAAAAAAAPwCA"
       "AAAAfsAAABUAEcATABVAEUAMgA6AFAAcgBvAHAAZQByAHQAeQBJAG4AcwBwAGUAYwB0AG8AcgAvAFAAcgBvAHAAZQByAHQAeQAgAEkAbgBzAHAAZ"
-      "QBjAHQAbwByAAAAAAD/////AAAAOQD///8AAAQtAAACXwAAAAEAAAACAAAAAQAAAAL8AAAAAQAAAAIAAAAP/////wAAAAAA/////wAAAAAAAAAA/"
+      "QBjAHQAbwByAAAAAAD/////AAAAOQD///8AAANzAAADmwAAAAEAAAACAAAAAQAAAAL8AAAAAQAAAAIAAAAP/////wAAAAAA/////wAAAAAAAAAA/"
       "////wEAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/"
       "////wEAAAB5/////wAAAAAAAAAA/////wEAAADa/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAFT/////wAAAAAAAAAA/"
       "////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAL9/////wAAAAAAAAAA/"
@@ -105,9 +117,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Luca"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Jun 04 14:50:23 2019"
-  RTWModifiedTimeStamp	  481560620
-  ModelVersionFormat	  "1.%<AutoIncrement:485>"
+  LastModifiedDate	  "Tue Jun 04 15:23:44 2019"
+  RTWModifiedTimeStamp	  481562181
+  ModelVersionFormat	  "1.%<AutoIncrement:488>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
@@ -1894,7 +1906,7 @@ Model {
   }
   System {
     Name		    "LAB2_motorDC_VI"
-    Location		    [583, 185, 1668, 916]
+    Location		    [1028, 0, 1927, 1047]
     Open		    on
     PortBlocksUseCompactNotation off
     SetExecutionDomain	    off
@@ -1909,9 +1921,9 @@ Model {
     TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "80"
+    ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "54"
+    SIDHighWatermark	    "56"
     Block {
       BlockType		      Quantizer
       Name		      "DAC\nquantizer"
@@ -1982,7 +1994,7 @@ Model {
       BlockType		      Gain
       Name		      "Kp"
       SID		      "43"
-      Position		      [225, 385, 255, 415]
+      Position		      [210, 385, 240, 415]
       ZOrder		      2
       Gain		      "0.05"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
@@ -2012,6 +2024,346 @@ Model {
       ShowName		      off
       Inputs		      "2"
       DisplayOption	      "bar"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "PD with b_hat"
+      SID		      "56"
+      Ports		      [1, 1]
+      Position		      [205, 277, 245, 313]
+      ZOrder		      309
+      LibraryVersion	      "1.444"
+      SourceBlock	      "simulink/Continuous/PID Controller"
+      SourceType	      "PID 1dof"
+      SourceProductName	      "Simulink"
+      SourceProductBaseCode   "SL"
+      ContentPreviewEnabled   on
+      Controller	      "PD"
+      Form		      "Parallel"
+      TimeDomain	      "Continuous-time"
+      SampleTime	      "-1"
+      IntegratorMethod	      "Forward Euler"
+      FilterMethod	      "Forward Euler"
+      ControllerParametersSource "internal"
+      P			      "Kp_b"
+      I			      "1"
+      D			      "Kd_b"
+      UseFilter		      on
+      N			      "1/tau_c_b"
+      TunerSelectOption	      "Transfer Function Based (PID Tuner App)"
+      ZeroCross		      on
+      InitialConditionSource  "internal"
+      InitialConditionForIntegrator "0"
+      InitialConditionForFilter	"0"
+      DifferentiatorICPrevScaledInput "0"
+      ExternalReset	      "none"
+      IgnoreLimit	      off
+      TrackingMode	      off
+      Kt		      "1"
+      LimitOutput	      off
+      UpperSaturationLimit    "inf"
+      LowerSaturationLimit    "-inf"
+      LinearizeAsGain	      on
+      AntiWindupMode	      "none"
+      Kb		      "1"
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	off
+      LockScale		      off
+      PGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      PProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      POutMin		      "[]"
+      POutMax		      "[]"
+      IGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      IProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      IOutMin		      "[]"
+      IOutMax		      "[]"
+      DGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      DProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      DOutMin		      "[]"
+      DOutMax		      "[]"
+      NGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      NProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      NOutMin		      "[]"
+      NOutMax		      "[]"
+      SumOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SumOutMin		      "[]"
+      SumOutMax		      "[]"
+      SaturationOutDataTypeStr "Inherit: Same as input"
+      SaturationOutMin	      "[]"
+      SaturationOutMax	      "[]"
+      PParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      PParamMin		      "[]"
+      PParamMax		      "[]"
+      IParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      IParamMin		      "[]"
+      IParamMax		      "[]"
+      DParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      DParamMin		      "[]"
+      DParamMax		      "[]"
+      NParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      NParamMin		      "[]"
+      NParamMax		      "[]"
+      KbParamDataTypeStr      "Inherit: Inherit via internal rule"
+      KbParamMin	      "[]"
+      KbParamMax	      "[]"
+      KtParamDataTypeStr      "Inherit: Inherit via internal rule"
+      KtParamMin	      "[]"
+      KtParamMax	      "[]"
+      KbOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      KbOutMin		      "[]"
+      KbOutMax		      "[]"
+      KtOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      KtOutMin		      "[]"
+      KtOutMax		      "[]"
+      IntegratorOutDataTypeStr "Inherit: Inherit via internal rule"
+      IntegratorOutMin	      "[]"
+      IntegratorOutMax	      "[]"
+      FilterOutDataTypeStr    "Inherit: Inherit via internal rule"
+      FilterOutMin	      "[]"
+      FilterOutMax	      "[]"
+      SumI1OutDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI1OutMin	      "[]"
+      SumI1OutMax	      "[]"
+      SumI2OutDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI2OutMin	      "[]"
+      SumI2OutMax	      "[]"
+      SumI3OutDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI3OutMin	      "[]"
+      SumI3OutMax	      "[]"
+      SumI4OutDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI4OutMin	      "[]"
+      SumI4OutMax	      "[]"
+      SumDOutDataTypeStr      "Inherit: Inherit via internal rule"
+      SumDOutMin	      "[]"
+      SumDOutMax	      "[]"
+      SumAccumDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI1AccumDataTypeStr   "Inherit: Inherit via internal rule"
+      SumI2AccumDataTypeStr   "Inherit: Inherit via internal rule"
+      SumI3AccumDataTypeStr   "Inherit: Inherit via internal rule"
+      SumI4AccumDataTypeStr   "Inherit: Inherit via internal rule"
+      SumDAccumDataTypeStr    "Inherit: Inherit via internal rule"
+      DifferentiatorOutDataTypeStr "Inherit: Inherit via internal rule"
+      DifferentiatorOutMin    "[]"
+      DifferentiatorOutMax    "[]"
+      FilterDiffNumProductOutputDataTypeStr "Inherit: Inherit via internal rule"
+      FilterDiffDenProductOutputDataTypeStr "Inherit: Inherit via internal rule"
+      FilterDiffNumAccumDataTypeStr "Inherit: Inherit via internal rule"
+      FilterDiffDenAccumDataTypeStr "Inherit: Inherit via internal rule"
+      FilterDiffOutCoefDataTypeStr "Inherit: Inherit via internal rule"
+      FilterDiffOutCoefMin    "[]"
+      FilterDiffOutCoefMax    "[]"
+      ReciprocalOutDataTypeStr "Inherit: Inherit via internal rule"
+      ReciprocalOutMin	      "[]"
+      ReciprocalOutMax	      "[]"
+      SumDenOutDataTypeStr    "Inherit: Inherit via internal rule"
+      SumDenOutMin	      "[]"
+      SumDenOutMax	      "[]"
+      SumNumOutDataTypeStr    "Inherit: Inherit via internal rule"
+      SumNumOutMin	      "[]"
+      SumNumOutMax	      "[]"
+      SumDenAccumDataTypeStr  "Inherit: Inherit via internal rule"
+      SumNumAccumDataTypeStr  "Inherit: Inherit via internal rule"
+      DivideOutDataTypeStr    "Inherit: Inherit via internal rule"
+      DivideOutMin	      "[]"
+      DivideOutMax	      "[]"
+      IntegratorContinuousStateAttributes "''"
+      IntegratorStateMustResolveToSignalObject off
+      IntegratorRTWStateStorageClass "Auto"
+      FilterContinuousStateAttributes "''"
+      FilterStateMustResolveToSignalObject off
+      FilterRTWStateStorageClass "Auto"
+      ParallelPVariant	      "InternalParameters"
+      IdealPVariant	      "Disabled"
+      IVariant		      "Disabled"
+      DVariant		      "InternalParameters"
+      IntegratorVariant	      "Disabled"
+      SatVariant	      "Disabled"
+      AWVariant		      "Disabled"
+      PCopyVariant	      "Disabled"
+      TRVariant		      "Disabled"
+      FdbkBlocksVariant	      "Forward"
+      IdealPFdbkVariant	      "Disabled"
+      SatFdbkVariant	      "Disabled"
+      DerivativeFilterVariant "ContFilter"
+      NVariant		      "InternalParameters"
+      NCopyVariant	      "Disabled"
+      FilterICVariant	      "InternalICsFilter"
+      IntegratorICVariant     "Disabled"
+      ExternalResetVariant    "Disabled"
+      TRSumVariant	      "Passthrough"
+      SumFdbkVariant	      "Disabled"
+      SumVariant	      "Sum_PD"
+      InitialConditionSetting "Auto"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "PD without b_hat"
+      SID		      "55"
+      Ports		      [1, 1]
+      Position		      [205, 332, 245, 368]
+      ZOrder		      308
+      LibraryVersion	      "1.444"
+      SourceBlock	      "simulink/Continuous/PID Controller"
+      SourceType	      "PID 1dof"
+      SourceProductName	      "Simulink"
+      SourceProductBaseCode   "SL"
+      ContentPreviewEnabled   on
+      Controller	      "PD"
+      Form		      "Parallel"
+      TimeDomain	      "Continuous-time"
+      SampleTime	      "-1"
+      IntegratorMethod	      "Forward Euler"
+      FilterMethod	      "Forward Euler"
+      ControllerParametersSource "internal"
+      P			      "Kp"
+      I			      "1"
+      D			      "Kd"
+      UseFilter		      on
+      N			      "1/tau_c"
+      TunerSelectOption	      "Transfer Function Based (PID Tuner App)"
+      ZeroCross		      on
+      InitialConditionSource  "internal"
+      InitialConditionForIntegrator "0"
+      InitialConditionForFilter	"0"
+      DifferentiatorICPrevScaledInput "0"
+      ExternalReset	      "none"
+      IgnoreLimit	      off
+      TrackingMode	      off
+      Kt		      "1"
+      LimitOutput	      off
+      UpperSaturationLimit    "inf"
+      LowerSaturationLimit    "-inf"
+      LinearizeAsGain	      on
+      AntiWindupMode	      "none"
+      Kb		      "1"
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	off
+      LockScale		      off
+      PGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      PProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      POutMin		      "[]"
+      POutMax		      "[]"
+      IGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      IProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      IOutMin		      "[]"
+      IOutMax		      "[]"
+      DGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      DProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      DOutMin		      "[]"
+      DOutMax		      "[]"
+      NGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      NProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      NOutMin		      "[]"
+      NOutMax		      "[]"
+      SumOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SumOutMin		      "[]"
+      SumOutMax		      "[]"
+      SaturationOutDataTypeStr "Inherit: Same as input"
+      SaturationOutMin	      "[]"
+      SaturationOutMax	      "[]"
+      PParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      PParamMin		      "[]"
+      PParamMax		      "[]"
+      IParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      IParamMin		      "[]"
+      IParamMax		      "[]"
+      DParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      DParamMin		      "[]"
+      DParamMax		      "[]"
+      NParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      NParamMin		      "[]"
+      NParamMax		      "[]"
+      KbParamDataTypeStr      "Inherit: Inherit via internal rule"
+      KbParamMin	      "[]"
+      KbParamMax	      "[]"
+      KtParamDataTypeStr      "Inherit: Inherit via internal rule"
+      KtParamMin	      "[]"
+      KtParamMax	      "[]"
+      KbOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      KbOutMin		      "[]"
+      KbOutMax		      "[]"
+      KtOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      KtOutMin		      "[]"
+      KtOutMax		      "[]"
+      IntegratorOutDataTypeStr "Inherit: Inherit via internal rule"
+      IntegratorOutMin	      "[]"
+      IntegratorOutMax	      "[]"
+      FilterOutDataTypeStr    "Inherit: Inherit via internal rule"
+      FilterOutMin	      "[]"
+      FilterOutMax	      "[]"
+      SumI1OutDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI1OutMin	      "[]"
+      SumI1OutMax	      "[]"
+      SumI2OutDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI2OutMin	      "[]"
+      SumI2OutMax	      "[]"
+      SumI3OutDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI3OutMin	      "[]"
+      SumI3OutMax	      "[]"
+      SumI4OutDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI4OutMin	      "[]"
+      SumI4OutMax	      "[]"
+      SumDOutDataTypeStr      "Inherit: Inherit via internal rule"
+      SumDOutMin	      "[]"
+      SumDOutMax	      "[]"
+      SumAccumDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI1AccumDataTypeStr   "Inherit: Inherit via internal rule"
+      SumI2AccumDataTypeStr   "Inherit: Inherit via internal rule"
+      SumI3AccumDataTypeStr   "Inherit: Inherit via internal rule"
+      SumI4AccumDataTypeStr   "Inherit: Inherit via internal rule"
+      SumDAccumDataTypeStr    "Inherit: Inherit via internal rule"
+      DifferentiatorOutDataTypeStr "Inherit: Inherit via internal rule"
+      DifferentiatorOutMin    "[]"
+      DifferentiatorOutMax    "[]"
+      FilterDiffNumProductOutputDataTypeStr "Inherit: Inherit via internal rule"
+      FilterDiffDenProductOutputDataTypeStr "Inherit: Inherit via internal rule"
+      FilterDiffNumAccumDataTypeStr "Inherit: Inherit via internal rule"
+      FilterDiffDenAccumDataTypeStr "Inherit: Inherit via internal rule"
+      FilterDiffOutCoefDataTypeStr "Inherit: Inherit via internal rule"
+      FilterDiffOutCoefMin    "[]"
+      FilterDiffOutCoefMax    "[]"
+      ReciprocalOutDataTypeStr "Inherit: Inherit via internal rule"
+      ReciprocalOutMin	      "[]"
+      ReciprocalOutMax	      "[]"
+      SumDenOutDataTypeStr    "Inherit: Inherit via internal rule"
+      SumDenOutMin	      "[]"
+      SumDenOutMax	      "[]"
+      SumNumOutDataTypeStr    "Inherit: Inherit via internal rule"
+      SumNumOutMin	      "[]"
+      SumNumOutMax	      "[]"
+      SumDenAccumDataTypeStr  "Inherit: Inherit via internal rule"
+      SumNumAccumDataTypeStr  "Inherit: Inherit via internal rule"
+      DivideOutDataTypeStr    "Inherit: Inherit via internal rule"
+      DivideOutMin	      "[]"
+      DivideOutMax	      "[]"
+      IntegratorContinuousStateAttributes "''"
+      IntegratorStateMustResolveToSignalObject off
+      IntegratorRTWStateStorageClass "Auto"
+      FilterContinuousStateAttributes "''"
+      FilterStateMustResolveToSignalObject off
+      FilterRTWStateStorageClass "Auto"
+      ParallelPVariant	      "InternalParameters"
+      IdealPVariant	      "Disabled"
+      IVariant		      "Disabled"
+      DVariant		      "InternalParameters"
+      IntegratorVariant	      "Disabled"
+      SatVariant	      "Disabled"
+      AWVariant		      "Disabled"
+      PCopyVariant	      "Disabled"
+      TRVariant		      "Disabled"
+      FdbkBlocksVariant	      "Forward"
+      IdealPFdbkVariant	      "Disabled"
+      SatFdbkVariant	      "Disabled"
+      DerivativeFilterVariant "ContFilter"
+      NVariant		      "InternalParameters"
+      NCopyVariant	      "Disabled"
+      FilterICVariant	      "InternalICsFilter"
+      IntegratorICVariant     "Disabled"
+      ExternalResetVariant    "Disabled"
+      TRSumVariant	      "Passthrough"
+      SumFdbkVariant	      "Disabled"
+      SumVariant	      "Sum_PD"
+      InitialConditionSetting "Auto"
     }
     Block {
       BlockType		      DiscretePulseGenerator
@@ -2116,14 +2468,14 @@ Model {
       "666666666667;0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831"
       "372549019608 0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.074509803921568"
       "6 0.650980392156863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLine"
-      "s',0,'LineNames',{{[]}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-1.22"
-      "43','MaxYLimReal','49.86797','YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','49.86797','LegendVisibility','"
-      "off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686"
-      "274509803922 0.686274509803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078"
-      "431372549;1 1 0.0666666666666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.074"
-      "5098039215686;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plo"
-      "t Navigation',true,'OnceAtStop',false),extmgr.Configuration('Tools','Measurements',true,'Version','2018b')),'Ver"
-      "sion','2018b','Position',[1448 50 560 420],'VisibleAtModelOpen','on')"
+      "s',1,'LineNames',{{'Encoder quantizer'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('Mi"
+      "nYLimReal','-1.2243','MaxYLimReal','49.86797','YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','49.86797','Le"
+      "gendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.6862"
+      "74509803922 0.686274509803922 0.686274509803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764"
+      "705882353 0.16078431372549;1 1 0.0666666666666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.8313"
+      "72549019608 0.0745098039215686;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configura"
+      "tion('Tools','Plot Navigation',true,'OnceAtStop',false),extmgr.Configuration('Tools','Measurements',true,'Versio"
+      "n','2018b')),'Version','2018b','Position',[1336 198 560 420],'VisibleAtModelOpen','on')"
       NumInputPorts	      "1"
       Floating		      off
     }
@@ -2251,10 +2603,11 @@ Model {
       }
     }
     Line {
-      ZOrder		      35
+      ZOrder		      153
       SrcBlock		      "Sum"
       SrcPort		      1
-      DstBlock		      "Kp"
+      Points		      [3, 0; 0, -105]
+      DstBlock		      "PD with b_hat"
       DstPort		      1
     }
     Line {
@@ -2356,13 +2709,6 @@ Model {
       }
     }
     Line {
-      ZOrder		      39
-      SrcBlock		      "Kp"
-      SrcPort		      1
-      DstBlock		      "Saturation"
-      DstPort		      1
-    }
-    Line {
       ZOrder		      43
       SrcBlock		      "HPF"
       SrcPort		      1
@@ -2429,6 +2775,14 @@ Model {
       SrcBlock		      "Mux"
       SrcPort		      1
       DstBlock		      "To Workspace2"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      154
+      SrcBlock		      "PD with b_hat"
+      SrcPort		      1
+      Points		      [17, 0; 0, 105]
+      DstBlock		      "Saturation"
       DstPort		      1
     }
   }

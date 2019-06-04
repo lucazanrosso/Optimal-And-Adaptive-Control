@@ -1,9 +1,9 @@
 %% 4 Identification of discrete time linear systems
 
 %% 4.1 Parameter identification
-n = 20000; % samples
-u = data.signals.values(:,1);  %salvo i valori degli ingressi
-y_f = data.signals.values(:,2); %salvo i valori dell'uscita
+n = 20000;                      % number of samples
+u = data.signals.values(:,1);   % input samples
+y_f = data.signals.values(:,2); % output samples
 
 I = eye(3);
 PHI_0 =  [ -y_f(1) u(2) u(1); -y_f(2) u(3) u(2); -y_f(3) u(4) u(3);];
@@ -48,6 +48,8 @@ title('grafico RLS (known noise variance)')
 xlabel('numero misurazioni')
 ylabel('teta stim e \sigma_n')
 legend('\theta_{real}','\theta_{hat}','upper bound','lower bound')
+
+b_hat = b_hat(20001);
 
 
 %% Verifica b_hat

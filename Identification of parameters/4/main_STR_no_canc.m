@@ -39,10 +39,10 @@ sysHy = tf(numHy, denHy, Ts);
 %% Inizialization of PD parameters
 % comment on all parameters after running simulink.
 
-Kp = 1;
-Kd = 1;
-tau_c = 1;
-
-Kp_b = 1;
-Kd_b = 1;
-tau_c_b = 1;
+% Kp = 1;
+% Kd = 1;
+% tau_c = 1;
+% 
+% Kp_b = 1;
+% Kd_b = 1;
+% tau_c_b = 1;
