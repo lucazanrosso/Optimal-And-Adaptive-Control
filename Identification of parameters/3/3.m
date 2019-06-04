@@ -1,4 +1,4 @@
-%% 3 Model selection with cross validation
+%% Esercizio 2
 clear; close all;
 
 N = 100; %dati totali
