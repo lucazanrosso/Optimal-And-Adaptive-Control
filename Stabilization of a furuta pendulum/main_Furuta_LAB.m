@@ -1,4 +1,4 @@
-close all; clear all;
+% close all; clear all;
 
 %% Define parameters
 
@@ -32,7 +32,7 @@ b42 = (J1 + m2*l1^2)/gam;
 
 A=[0 0 1 0;0 0 0 1;0 a32 0 0; 0 a42 0 0];
 B=[0 0 ; 0 0; b31 b32; b41 b42 ];
-x0 = [0; 5*pi/180; 0; 0];
+x0 = [0; 3*pi/180; 0; 0];
 q0 = x0(1:2);
 dq0 = x0(3:4);
 
@@ -60,31 +60,33 @@ tau2_impulse = 0.001; %magnitude of the impulse [Nm]
 %% 3
 C1 = [1 0 0 0];
 Q = C1'*C1;
-r = 100;
+r = 10;
 [Kinf,Pinf,lam] = lqr(A,B(:,1),Q,r);
 
 %% 3.1  Compute explicitly the transfer function in terms of the systems parameters
 I = eye(4);
 s = tf('s');
 P = C1*inv(s*I-A)*B(:,1);
+[z, p] = pzmap(P);
 P = minreal(P);
 
 %% 3.2 Compute open loop poles and zeros of such transfer function
 P2 = C1*inv(-s*I-A)*B(:,1);
 P2 = minreal(P2);
-G = P * P2;
 
 %% 3.3 Compute the Symmetric Root Locus for such transfer function
-% rlocus(G)
+% rlocus(P);
 
-%% 3.4 3.5 3.6 Graphical evaluation from root locus
+%% 3.4 3.5 Compute the location of the closed loop poles of the LQR solution for r
+G = P * P2;
+% rlocus(G);
 
 %% 3.7 Compute the alternative solution based on pole placement
 wn = 10;
 pp = wn*[ -sqrt(2)/2+1i*sqrt(2)/2  -sqrt(2)/2-1i*sqrt(2)/2 -sqrt(3)/2+1i/2  -sqrt(3)/2-1i/2];
 Kinf = place(A,B(:,1),pp);
 
-%% 3.8 Compare the performance between the LQR and the Pole Placement approach by using the best performing values for r and ?n 
+%% 3.8 Compare the performance between the LQR and the Pole Placement approach by using the best performing values for r and omega_n 
 
 
 
@@ -93,7 +95,7 @@ O = obsv(A,C1);
 det(O);
 
 %% 4.1 Design a Dynamic Observer based on Pole placement
-% L = place(A',C1',pp)';
+L = place(A',C1',pp)';
 
 %% 4.2 Design a Dynamic Observer by using LQR approach
 F = A';
@@ -102,10 +104,14 @@ H = B(:,1)';
 Q = H' * H;
 
 %% 4.3 Compute explicitly the transfer function in terms of the systems parameters
-% P = H*inv(s*I-F)*G;
+P = H*inv(s*I-F)*G;
+[z, p] = pzmap(P);
 
 %% 4.4  Compute the LQR gain for this system for different values of r
 [Tau,Pinf,lam] = lqr(F,G,Q,r);
-L = Tau';
+% L = Tau';
 
 %% 4.5 Compare the Pole Placement design with the LQR design for the Dynamic Observer
+
+
+%prestaz migliori r = 10 e wn = 10
